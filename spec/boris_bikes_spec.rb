@@ -6,5 +6,4 @@ describe DockingStation do
     docking_station.release_bike
     expect(docking_station.release_bike).respond_to?(:release_bike)
   end
-
 end
