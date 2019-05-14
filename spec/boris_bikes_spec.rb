@@ -36,4 +36,25 @@ describe DockingStation do
     docking_station = DockingStation.new
     expect(docking_station).to respond_to(:bike)
   end
+  it "will raise an error if you ask for a bike but there is no bike" do
+    # arrange
+    docking_station = DockingStation.new
+    bike = Bike.new
+    # act
+    docking_station.dock_bike(bike)
+    bike = docking_station.release_bike
+    # assert
+    expect { docking_station.release_bike }.to raise_error
+  end
+  it 'should know what total is' do
+    docking_station = DockingStation.new
+    expect(docking_station).to respond_to(:total)
+  end
+  it 'should have a total of 1 after 1 bike is docked' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.dock_bike(bike)
+    the_total = docking_station.total
+    expect(the_total).to eq(1)
+  end
 end
